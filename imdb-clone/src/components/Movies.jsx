@@ -7,11 +7,10 @@ import Pagination from './Pagination'
 
 
 
-function Movies({handleAddtoWatchList , handleRemoveFromWatchlist , watchlist}) {
+function Movies() {
 
     const [movies , setMovies] = useState([])
     const [pageNo , setPageNo] = useState(1)
-    const [search , setSearch] = useState('')
 
 
     const handlePrev = ()=>{
@@ -56,7 +55,7 @@ function Movies({handleAddtoWatchList , handleRemoveFromWatchlist , watchlist}) 
        <div className='flex flex-row flex-wrap justify-around gap-8'>
           
            {movies.map((movieObj)=>{
-              return <MovieCard key={movieObj.id} movieObj={movieObj} poster_path={movieObj.poster_path} name={movieObj.original_title} handleAddtoWatchList={handleAddtoWatchList} handleRemoveFromWatchlist={handleRemoveFromWatchlist} watchlist={watchlist}  />
+              return <MovieCard key={movieObj.id} movieObj={movieObj} poster_path={movieObj.poster_path}  />
            })}
        </div>
 

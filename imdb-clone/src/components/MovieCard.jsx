@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../context/AppContext";
+
+
 
 
 function MovieCard({
   movieObj,
   poster_path,
   name,
-  handleAddtoWatchList,
-  handleRemoveFromWatchlist,
-  watchlist,
 }) {
+
+   const myContext = useContext(AppContext)
+
+
   function doesContain(movieObj) {
-    for (let i = 0; i < watchlist.length; i++) {
-      if (watchlist[i].id == movieObj.id) {
+    for (let i = 0; i < myContext.watchlist.length; i++) {
+      if (myContext.watchlist[i].id == movieObj.id) {
         return true;
       }
     }
@@ -26,14 +30,14 @@ function MovieCard({
     >
       {doesContain(movieObj) ? (
         <div
-          onClick={() => handleRemoveFromWatchlist(movieObj)}
+          onClick={() => myContext.handleRemoveFromWatchlist(movieObj)}
           className="m-4 flex justify-center h-8 w-8 items-center rounded-lg bg-gray-900/60"
         >
           &#10060;
         </div>
       ) : (
         <div
-          onClick={() => handleAddtoWatchList(movieObj)}
+          onClick={() => myContext.handleAddtoWatchlist(movieObj)}
           className="m-4 flex justify-center h-8 w-8 items-center rounded-lg bg-gray-900/60"
         >
           &#128525;
